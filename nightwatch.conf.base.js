@@ -22,7 +22,7 @@ module.exports = {
 
   test_settings: {
     default: {
-      launch_url: 'http://localhost',
+      launch_url: 'https://www.domain.com.au',
       screenshots: {
         enabled: true,
         path: './screens',
