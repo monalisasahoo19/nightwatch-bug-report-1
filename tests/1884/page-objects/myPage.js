@@ -21,12 +21,11 @@ module.exports = {
       this.searchText(value);
       this.api.pause(4000);
       this.api.elements('css selector', '.Select-option', (result) => {
-        console.log(result.value);
-        
+        console.log('All the ELEMENTS:', result.value);
         result.value.forEach((element) => {
           this.api.elementIdText(element.ELEMENT, (text) => {
             if (!matchedElement && text.value.startsWith(value)
-                          && text.value.endsWith(searchGroup) && !text.value.startsWith('Add ')) {
+                            && text.value.endsWith(searchGroup) && !text.value.startsWith('Add ')) {
               console.log(`MATCHED ELEMENT: ${text.value}`);
               matchedElement = element.ELEMENT;
               this.api.elementIdClick(matchedElement);
@@ -39,6 +38,17 @@ module.exports = {
       this.searchText(keyword);
       this.api.pause(1000);
       this.selectFirstValue();
+      this.api.pause(1000);
+      return this;
+    },
+    searchByRegionName(suburbName) {
+      this.searchByName(suburbName, 'Region');
+      this.api.pause(1000);
+      return this;
+    },
+
+    searchByAreaName(suburbName) {
+      this.searchByName(suburbName, 'Area');
       this.api.pause(1000);
       return this;
     },

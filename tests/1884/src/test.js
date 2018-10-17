@@ -15,4 +15,15 @@ module.exports = {
       .assertUrlContains('postcode=2150');
   },
 
+  'Demo test search by multiple suburb': (browser) => {
+    homePage
+      .navigate(browser.launchUrl);
+    browser.click(homePage.elements.soldFilter.selector);
+
+    homePage.searchByAreaName('Parramatta')
+      .searchByRegionName('Sydney')
+      .search()
+      .assertUrlContains('/parramatta-nsw/');
+  },
+
 };
